@@ -1,0 +1,51 @@
+#include<stdio.h>
+
+#include<stdlib.h>
+
+#include<unistd.h>
+
+#include<pthread.h>
+
+  void *numberThread( void *fun)
+
+ {
+
+	int a;
+	
+	int p;
+	
+	clock_t start = clock(), diff;
+	
+	    for( p=0; a!= 1000; p++) 
+	    {
+	        
+		diff = clock() - start;
+		
+		a = diff * 1000 / CLOCKS_PER_SEC;
+		
+	    }
+	    
+	  diff = clock() - start;
+	  
+	  
+		a = diff * 1000 / CLOCKS_PER_SEC ;
+		
+		p++;
+
+     	printf("Number is %d", p++);
+	
+	return NULL;
+	
+    }  
+  int main() 
+  
+ {
+      pthread_t thread_id;
+      
+          pthread_create(&thread_id, NULL, numberThread, NULL);
+          
+             pthread_join(thread_id, NULL);
+             
+    exit(0);
+    
+ }
